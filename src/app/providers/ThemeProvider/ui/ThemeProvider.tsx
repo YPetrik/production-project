@@ -1,7 +1,11 @@
 import React from 'react';
-import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from './ThemeContext';
+import {
+  LOCAL_STORAGE_THEME_KEY,
+  Theme,
+  ThemeContext,
+} from '../lib/ThemeContext';
 
-const ThemeProvider: React.FC = ({children}) => {
+const ThemeProvider: React.FC = ({ children }) => {
   const defaultTheme = (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.DARK;
   const [theme, setTheme] = React.useState<Theme>(defaultTheme);
 
@@ -12,9 +16,7 @@ const ThemeProvider: React.FC = ({children}) => {
     }),
     [theme],
   );
-  return <ThemeContext.Provider value={defaultProps}>
-		{children }
-	</ThemeContext.Provider>;
+  return <ThemeContext.Provider value={defaultProps}>{children}</ThemeContext.Provider>;
 };
 
 export default ThemeProvider;
